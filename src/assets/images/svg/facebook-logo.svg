@@ -1,0 +1,10 @@
+<svg id="Component_8_1" data-name="Component 8 – 1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <rect id="Rectangle_17" data-name="Rectangle 17" width="24" height="24" fill="rgba(255,255,255,0)"/>
+  <g id="vuesax_bold_facebook" data-name="vuesax/bold/facebook" transform="translate(3 101.841)">
+    <g id="facebook" transform="translate(0 -98.841)">
+      <path id="BG_111" data-name="BG 111" d="M0,0H18V18H0Z" fill="none" opacity="0.58"/>
+      <path id="Vector" d="M15,10.643A4,4,0,0,1,10.643,15H9.75A.752.752,0,0,1,9,14.25V9.923a.375.375,0,0,1,.367-.375l1.32-.022a.239.239,0,0,0,.218-.188l.263-1.433a.227.227,0,0,0-.225-.263l-1.6.022A.381.381,0,0,1,8.963,7.3L8.933,5.46a.226.226,0,0,1,.225-.225l1.8-.03a.221.221,0,0,0,.225-.225l-.03-1.8a.221.221,0,0,0-.225-.225L8.9,2.985A2.247,2.247,0,0,0,6.69,5.272l.037,2.063a.371.371,0,0,1-.367.383l-.9.015a.221.221,0,0,0-.225.225l.022,1.425a.221.221,0,0,0,.225.225l.9-.015a.381.381,0,0,1,.382.367l.067,4.275a.751.751,0,0,1-.75.765H4.358A4,4,0,0,1,0,10.635V4.357A4,4,0,0,1,4.358,0h6.285A4,4,0,0,1,15,4.357v6.285Z" transform="translate(1.5 1.5)" fill="#fff"/>
+      <path id="Vector-2" data-name="Vector" d="M0,0H18V18H0Z" fill="none" opacity="0"/>
+    </g>
+  </g>
+</svg>

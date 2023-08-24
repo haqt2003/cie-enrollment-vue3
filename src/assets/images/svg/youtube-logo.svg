@@ -1,0 +1,10 @@
+<svg id="Component_6_1" data-name="Component 6 – 1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <rect id="Rectangle_16" data-name="Rectangle 16" width="24" height="24" fill="rgba(255,255,255,0)"/>
+  <g id="vuesax_bold_youtube" data-name="vuesax/bold/youtube" transform="translate(3 3)">
+    <g id="youtube">
+      <path id="BG_165" data-name="BG 165" d="M0,0H18V18H0Z" fill="none" opacity="0.58"/>
+      <path id="Vector" d="M13.5,0h-9A4.251,4.251,0,0,0,0,4.5V9.9a4.251,4.251,0,0,0,4.5,4.5h9A4.251,4.251,0,0,0,18,9.9V4.5A4.251,4.251,0,0,0,13.5,0ZM10.7,8.127,8.478,9.459c-.9.54-1.638.126-1.638-.927V5.859c0-1.053.738-1.467,1.638-.927L10.7,6.264A1,1,0,0,1,10.7,8.127Z" transform="translate(0 1.8)" fill="#fff"/>
+      <path id="Vector-2" data-name="Vector" d="M0,0H18V18H0Z" fill="none" opacity="0"/>
+    </g>
+  </g>
+</svg>
