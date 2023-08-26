@@ -867,7 +867,12 @@
                 class="ml-1"
               />
             </div>
-            <input id="upload" type="file" class="hidden" />
+            <input
+              id="upload"
+              type="file"
+              class="hidden"
+              @change="onChangeFile"
+            />
           </label>
         </div>
         <p class="text-lg mt-6">
@@ -948,6 +953,8 @@ import {
   SUBJECT_LIST,
   PROGRAM_LIST,
 } from "@/constants";
+import useCollection from "@/composables/useCollection";
+import useStorage from "@/composables/useStorage";
 export default {
   setup() {
     const majorLists = reactive({
@@ -1067,6 +1074,9 @@ export default {
         return null;
       }
     });
+    const file = ref(null);
+    const { addRecord } = useCollection("profiles");
+    const { uploadFile } = useStorage("resumes");
 
     function onClick(index, ind) {
       this.programLists.forEach((path, current) => {
@@ -1227,10 +1237,36 @@ export default {
       }
     }
 
-    function onChangeFile(e) {}
+    function onChangeFile(e) {
+      const selected = e.target.files[0];
+      if (selected) {
+        file.value = selected;
+      } else {
+        file.value = null;
+      }
+    }
 
-    function onSubmit() {
-      console.log("test");
+    async function onSubmit() {
+      if (file.value) await uploadFile(file.value);
+      const profile = {
+        fullName: fullName.value,
+        sex: sex.value.value,
+        dateOfBirth: dateOfBirth.value,
+        folk: folk.value,
+        religion: religion.value,
+        placeOfBirth: placeOfBirth.value.value,
+        graduationYear: graduationYear.value.value,
+        phoneNumber: phoneNumber.value,
+        email: email.value,
+        highSchoolProvince: highSchoolProvince.value.value,
+        highSchoolName: highSchoolName.value.value,
+        citizenId: citizenId.value,
+        dateOfId: dateOfId.value,
+        placeOfId: placeOfId.value,
+        subjects: subjects.value.value,
+        averageMark: averageMark.value,
+      };
+      await addRecord(profile);
     }
 
     return {
@@ -1270,6 +1306,7 @@ export default {
       mark8,
       mark9,
       averageMark,
+      file,
       onClick,
       onClickItem,
       addProgram,
@@ -1279,6 +1316,7 @@ export default {
       onChangeList,
       onActiveLabel,
       onBlurInput,
+      onChangeFile,
       onSubmit,
     };
   },
