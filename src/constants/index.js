@@ -103,24 +103,24 @@ export const PROGRAM_LIST = [
   {
     title:
       "CHƯƠNG TRÌNH CỬ NHÂN CNTT 2+2 QUỐC TẾ VỚI ĐẠI HỌC LA TROBE, AUSTRALIA",
-    img: "../assets/images/png/latrobe-img.png",
+    img: "https://haqtvn.github.io/cie-enrollment/assets/img/img1.png",
     link: "https://cie.ptit.edu.vn/vi/prog/chuong-trinh-du-hoc-chuyen-tiep-sang-hoc-tap-tai-dai-hoc-la-trobe-uc-nam-2023/",
   },
   {
     title: "CHƯƠNG TRÌNH CỬ NHÂN AN TOÀN THÔNG TIN VỚI ĐẠI HỌC BELLEVUE, MỸ",
-    img: "../assets/images/png/bellueve-img.png",
+    img: "https://haqtvn.github.io/cie-enrollment/assets/img/img2.png",
     link: "https://cie.ptit.edu.vn/vi/prog/chuong-trinh-du-hoc-chuyen-tiep-sang-hoc-tap-tai-dai-hoc-la-trobe-uc-nam-2023/",
   },
   {
     title:
       "CHƯƠNG TRÌNH CỬ NHÂN ĐA PHƯƠNG TIỆN 3+1 VỚI ĐẠI HỌC MIDDLESEX, VƯƠNG QUỐC ANH",
-    img: "../assets/images/png/middlesex-img.png",
+    img: "https://haqtvn.github.io/cie-enrollment/assets/img/img3.png",
     link: "https://cie.ptit.edu.vn/vi/prog/chuong-trinh-du-hoc-chuyen-tiep-sang-hoc-tap-tai-dai-hoc-middlesex-vuong-quoc-anh/",
   },
   {
     title:
       "CHƯƠNG TRÌNH CỬ NHÂN ĐA PHƯƠNG TIỆN 2+2 VỚI ĐẠI HỌC HUDDERSFIELD, VƯƠNG QUỐC ANH",
-    img: "../assets/images/png/huddlesfield-img.png",
+    img: "https://haqtvn.github.io/cie-enrollment/assets/img/img4.png",
     link: "https://cie.ptit.edu.vn/vi/prog/chuong-trinh-du-hoc-chuyen-tiep-22-hoac-31-sang-hoc-tap-tai-dai-hoc-huddersfield-vuong-quoc-anh-nam-2023/",
   },
 ];

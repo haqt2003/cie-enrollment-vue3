@@ -879,7 +879,7 @@
             >1. Phiếu đăng kí dự tuyển
             <a
               href="https://cie.ptit.edu.vn/wp-content/uploads/2020/09/1.-M%E1%BA%ABu-%C4%91%C6%A1n-%C4%91%C4%83ng-k%C3%BD-x%C3%A9t-tuy%E1%BB%83n_La-Trobe.docx"
-              class="underline-offset-2 text-[#4285F4] font-semibold relative ml-2"
+              class="text-[#4285F4] font-semibold relative ml-2 underline underline-offset-1"
               >Tải về tại đây
               <img
                 src="../assets/images/svg/download-icon.svg"
@@ -924,48 +924,14 @@
     <div class="mt-10">
       <span class="text-lg">CÁC CHƯƠNG TRÌNH LIÊN QUAN</span>
       <div class="mt-6 flex justify-between">
-        <div class="w-[273px]">
-          <a
-            href="https://cie.ptit.edu.vn/vi/prog/chuong-trinh-du-hoc-chuyen-tiep-sang-hoc-tap-tai-dai-hoc-la-trobe-uc-nam-2023/"
-            target="_blank"
-            ><img src="../assets/images/png/latrobe-img.png" alt="" />
-            <span class="font-semibold mt-4 block"
-              >CHƯƠNG TRÌNH CỬ NHÂN CNTT 2+2 QUỐC TẾ VỚI ĐẠI HỌC LA TROBE,
-              AUSTRALIA</span
-            ></a
-          >
-        </div>
-        <div class="w-[273px]">
-          <a
-            href="https://cie.ptit.edu.vn/vi/prog/chuong-trinh-du-hoc-chuyen-tiep-sang-hoc-tap-tai-dai-hoc-la-trobe-uc-nam-2023/"
-            target="_blank"
-            ><img src="../assets/images/png/bellueve-img.png" alt="" />
-            <span class="font-semibold mt-4 block"
-              >CHƯƠNG TRÌNH CỬ NHÂN AN TOÀN THÔNG TIN VỚI ĐẠI HỌC BELLEVUE,
-              MỸ</span
-            ></a
-          >
-        </div>
-        <div class="w-[273px]">
-          <a
-            href="https://cie.ptit.edu.vn/vi/prog/chuong-trinh-du-hoc-chuyen-tiep-sang-hoc-tap-tai-dai-hoc-middlesex-vuong-quoc-anh/"
-            target="_blank"
-            ><img src="../assets/images/png/middlesex-img.png" alt="" />
-            <span class="font-semibold mt-4 block"
-              >CHƯƠNG TRÌNH CỬ NHÂN ĐA PHƯƠNG TIỆN 3+1 VỚI ĐẠI HỌC MIDDLESEX,
-              VƯƠNG QUỐC ANH</span
-            ></a
-          >
-        </div>
-        <div class="w-[273px]">
-          <a
-            href="https://cie.ptit.edu.vn/vi/prog/chuong-trinh-du-hoc-chuyen-tiep-22-hoac-31-sang-hoc-tap-tai-dai-hoc-huddersfield-vuong-quoc-anh-nam-2023/"
-            target="_blank"
-            ><img src="../assets/images/png/huddlesfield-img.png" alt="" />
-            <span class="font-semibold mt-4 block"
-              >CHƯƠNG TRÌNH CỬ NHÂN ĐA PHƯƠNG TIỆN 2+2 VỚI ĐẠI HỌC HUDDERSFIELD,
-              VƯƠNG QUỐC ANH</span
-            ></a
+        <div
+          v-for="program in PROGRAMS"
+          :key="program"
+          class="w-[273px] overflow-hidden"
+        >
+          <a :href="program.link" target="_blank"
+            ><img :src="program.img" alt="" />
+            <span class="font-semibold mt-4 block">{{ program.title }}</span></a
           >
         </div>
       </div>
@@ -975,7 +941,13 @@
 
 <script>
 import { ref, reactive, computed } from "vue";
-import { SCHOOL_LIST, SEX_LIST, YEARS_LIST, SUBJECT_LIST } from "@/constants";
+import {
+  SCHOOL_LIST,
+  SEX_LIST,
+  YEARS_LIST,
+  SUBJECT_LIST,
+  PROGRAM_LIST,
+} from "@/constants";
 export default {
   setup() {
     const majorLists = reactive({
@@ -1038,7 +1010,7 @@ export default {
     const sexLists = reactive(SEX_LIST);
     const yearLists = reactive(YEARS_LIST);
     const subjectLists = reactive(SUBJECT_LIST);
-    // const PROGRAMS = reactive(PROGRAM_LIST);
+    const PROGRAMS = reactive(PROGRAM_LIST);
 
     const fullName = ref(null);
     const sex = ref({ value: null });
@@ -1255,6 +1227,8 @@ export default {
       }
     }
 
+    function onChangeFile(e) {}
+
     function onSubmit() {
       console.log("test");
     }
@@ -1267,7 +1241,7 @@ export default {
       sexLists,
       yearLists,
       subjectLists,
-      // PROGRAMS,
+      PROGRAMS,
       fullName,
       sex,
       dateOfBirth,
