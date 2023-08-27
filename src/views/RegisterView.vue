@@ -45,7 +45,7 @@
                     ><span class="text-red">* </span>{{ divItem.title }}</label
                   >
                   <span
-                    class="absolute top-[18px] w-[460px] ml-6 font-semibold truncate"
+                    class="absolute top-[18px] w-[460px] ml-6 font-semibold truncate queryList"
                     >{{ divItem.listSelect }}</span
                   >
                   <img
@@ -252,10 +252,12 @@
               class="absolute z-40 top-[42px] max-h-[200px] overflow-y-scroll mt-4 bg-white rounded-md shadow-lg w-full font-semibold hidden"
             >
               <li
+                v-for="item in data"
+                :key="item.name"
                 @click="onChangeList(placeOfBirth, $event)"
                 class="py-3 px-6 border-b border-[#EAEAEA] hover:bg-[#F8F8F8]"
               >
-                Hà Nội
+                {{ item.name }}
               </li>
             </ul>
             <img
@@ -370,10 +372,12 @@
               class="absolute z-40 top-[42px] max-h-[200px] overflow-y-scroll mt-4 bg-white rounded-md shadow-lg w-full font-semibold hidden"
             >
               <li
+                v-for="item in data"
+                :key="item.name"
                 @click="onChangeList(highSchoolProvince, $event)"
                 class="py-3 px-6 border-b border-[#EAEAEA] hover:bg-[#F8F8F8]"
               >
-                Hà Nội
+                {{ item.name }}
               </li>
             </ul>
             <img
@@ -918,10 +922,13 @@
         </div>
         <button
           type="submit"
-          class="px-[170px] text-lg text-white font-semibold bg-primary h-12 w-auto mt-10 mx-auto text-center rounded relative left-1/2 -translate-x-1/2"
+          class="px-[170px] text-lg text-white font-semibold bg-primary hover:bg-[#020247] h-12 w-auto mt-10 mx-auto text-center rounded relative left-1/2 -translate-x-1/2"
         >
           Đăng ký
         </button>
+        <span v-if="isSuccess" class="block text-primary text-center mt-6"
+          >Đăng ký thành công!</span
+        >
       </div>
     </form>
 
@@ -945,6 +952,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import { ref, reactive, computed } from "vue";
 import {
   SCHOOL_LIST,
@@ -957,6 +965,7 @@ import useCollection from "@/composables/useCollection";
 import useStorage from "@/composables/useStorage";
 export default {
   setup() {
+    const data = ref(null);
     const majorLists = reactive({
       title: "NGÀNH XÉT TUYỂN",
       isActive: false,
@@ -1019,6 +1028,7 @@ export default {
     const subjectLists = reactive(SUBJECT_LIST);
     const PROGRAMS = reactive(PROGRAM_LIST);
 
+    const uniLists = reactive([]);
     const fullName = ref(null);
     const sex = ref({ value: null });
     const dateOfBirth = ref(null);
@@ -1075,8 +1085,19 @@ export default {
       }
     });
     const file = ref(null);
+    let isSuccess = ref(null);
     const { addRecord } = useCollection("profiles");
     const { uploadFile } = useStorage("resumes");
+
+    function fecthData() {
+      axios
+        .get("https://provinces.open-api.vn/api/?depth=1")
+        .then((response) => {
+          data.value = response.data;
+        });
+    }
+
+    fecthData();
 
     function onClick(index, ind) {
       this.programLists.forEach((path, current) => {
@@ -1247,8 +1268,13 @@ export default {
     }
 
     async function onSubmit() {
+      const schools = document.querySelectorAll(".queryList");
+      schools.forEach((element) => {
+        uniLists.push(element.innerText);
+      });
       if (file.value) await uploadFile(file.value);
       const profile = {
+        uniLists: uniLists,
         fullName: fullName.value,
         sex: sex.value.value,
         dateOfBirth: dateOfBirth.value,
@@ -1267,9 +1293,12 @@ export default {
         averageMark: averageMark.value,
       };
       await addRecord(profile);
+      isSuccess.value = true;
     }
 
     return {
+      data,
+      uniLists,
       majorLists,
       schoolLists,
       listDivs,
@@ -1307,6 +1336,7 @@ export default {
       mark9,
       averageMark,
       file,
+      isSuccess,
       onClick,
       onClickItem,
       addProgram,
@@ -1318,6 +1348,7 @@ export default {
       onBlurInput,
       onChangeFile,
       onSubmit,
+      fecthData,
     };
   },
 };
