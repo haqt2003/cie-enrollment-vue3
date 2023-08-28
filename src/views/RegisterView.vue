@@ -67,6 +67,12 @@
                     </li>
                   </ul>
                   <span
+                    v-if="!uniLists"
+                    id="requireText"
+                    class="absolute left-0 text-xs -bottom-[24px] text-red hidden"
+                    >Trường bắt buộc</span
+                  >
+                  <span
                     v-if="
                       (ind === 0 && index > 2 && index % 2 === 1) ||
                       (ind > 0 && index > 2 && index % 2 === 1) ||
@@ -156,6 +162,7 @@
               class="absolute top-1/2 -translate-y-1/2 right-6"
             />
             <span
+              v-if="!sex"
               id="requireText"
               class="absolute left-0 text-xs -bottom-[24px] text-red hidden"
               >Trường bắt buộc</span
@@ -266,6 +273,7 @@
               class="absolute top-1/2 -translate-y-1/2 right-6"
             />
             <span
+              v-if="!placeOfBirth"
               id="requireText"
               class="absolute left-0 text-xs -bottom-[24px] text-red hidden"
               >Trường bắt buộc</span
@@ -304,6 +312,7 @@
               class="absolute top-1/2 -translate-y-1/2 right-6"
             />
             <span
+              v-if="!graduationYear"
               id="requireText"
               class="absolute left-0 text-xs -bottom-[24px] text-red hidden"
               >Trường bắt buộc</span
@@ -387,6 +396,7 @@
               class="absolute top-1/2 -translate-y-1/2 right-6"
             />
             <span
+              v-if="!highSchoolProvince"
               id="requireText"
               class="absolute left-0 text-xs -bottom-[24px] text-red hidden"
               >Trường bắt buộc</span
@@ -418,12 +428,12 @@
               </li>
             </ul>
             <img
-              nbv
               src="../assets/images/svg/arrow-bottom.svg"
               alt=""
               class="absolute top-1/2 -translate-y-1/2 right-6"
             />
             <span
+              v-if="highSchoolName"
               id="requireText"
               class="absolute left-0 text-xs -bottom-[24px] text-red hidden"
               >Trường bắt buộc</span
@@ -543,6 +553,7 @@
                   class="absolute top-1/2 -translate-y-1/2 right-6"
                 />
                 <span
+                  v-if="!subjects"
                   id="requireText"
                   class="absolute left-0 text-xs -bottom-[24px] text-red hidden"
                   >Trường bắt buộc</span
@@ -1086,6 +1097,7 @@ export default {
     });
     const file = ref(null);
     let isSuccess = ref(null);
+    const acpSubmit = ref(null);
     const { addRecord } = useCollection("profiles");
     const { uploadFile } = useStorage("resumes");
 
@@ -1348,6 +1360,7 @@ export default {
       onBlurInput,
       onChangeFile,
       onSubmit,
+      acpSubmit,
       fecthData,
     };
   },
